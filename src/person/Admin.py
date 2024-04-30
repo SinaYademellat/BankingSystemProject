@@ -16,6 +16,10 @@ class admin(Person.person):
                           'password: ' + self.password
                           )
 
+        # Task 1
+        def Change_Password(self, new_password):
+                self.password = new_password
+
 
 
 X = admin('sina','yad',1743,'ir','12')
