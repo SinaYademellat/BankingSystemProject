@@ -3,7 +3,7 @@ import sys
 sys.path.append('..')
 
 import Person
-import Text_Ui.iomap as my_iomap
+from  Text_Ui.iomap import  admin_TUI
 import Security.Authentication as my_Security_headers
 
 class admin(Person.person):
@@ -12,8 +12,6 @@ class admin(Person.person):
                 super(admin, self).__init__(first_name, family_name, national_code, home_town)
                 self.password = password
         
-        
-        # Task 0
         def show_information(self)->None:
                     print(' ------- << admin >> ------ \n'
                           ' name: ' + self.first_name + '\n',
@@ -22,15 +20,12 @@ class admin(Person.person):
                           'home_town: ' + self.home_town+'\n', 
                           'password: ' + self.password
                           )
-
-        # Task 1
         def Change_Password(self, filename:str):
 
                 new_password = input('password: ')
                 self.password = new_password
                 hex_hash_new_password = my_Security_headers.hash_password(new_password)
                 my_Security_headers.writing_to_file(filename,hex_hash_new_password)
-
 
 
 #  ======================== << GUI >> =========================
@@ -41,7 +36,7 @@ def admin_panel(db):
 
         while True : 
                 
-                admin_order = my_iomap.admin_TUI(40)
+                admin_order = admin_TUI(40)
                 
                 if(admin_order == 0):
                         server_admin.show_information()
@@ -51,11 +46,11 @@ def admin_panel(db):
 
                 elif(admin_order == 2):
 
-                        name_of_new_bank = input('Name: ')
-
                         result_query =  db.run_select_query('SELECT COUNT(*) as number FROM Bank')
                         number_of_banks = result_query[0].number
                         number_of_banks += 1
+                        
+                        name_of_new_bank = input('Name: ')
 
                         cursor = db.cnxn.cursor()
                         cursor.execute("INSERT INTO Bank(bank_id , name ) values (?, ?)", number_of_banks, name_of_new_bank)
@@ -63,17 +58,16 @@ def admin_panel(db):
                 
                 elif(admin_order == 3):
 
-                        name_of_new_Branch = input('Name: ')
-
                         result_query =  db.run_select_query('SELECT COUNT(*) as number FROM Branch')
                         number_of_Branch = result_query[0].number
                         number_of_Branch += 1
+
+                        name_of_new_Branch = input('Name: ')
 
                         cursor = db.cnxn.cursor()
                         cursor.execute("  INSERT INTO Branch(branch_id , name ) values (?, ?)", number_of_Branch, name_of_new_Branch)
                         db.cnxn.commit()
 
-                
                 elif(admin_order == 4):
                          
                         branch_id = input('branch_id: ')

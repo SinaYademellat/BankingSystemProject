@@ -20,3 +20,34 @@ class DatabasenHandel:
 
         return records
 
+    # ----------------------------------------------------------------
+
+    def all_user_in_db(self)->list:
+        
+        result_query = self.run_select_query( " SELECT national_code  from customer ")
+
+        list_of_users = []
+        for r in result_query:
+            list_of_users.append(str(r.national_code))
+
+        return list_of_users
+    
+
+    def budget_of_this_branch(self , branch_id:str)->float:
+
+        
+        qurey_str = "SELECT budget from Branch where branch_id = " + branch_id
+        result_query = self.run_select_query(qurey_str)
+        
+        return(result_query[0].budget)
+
+    def all_branches_where_the_user_has_Loan(self, customer_id:str)->list:
+
+        qurey_str = " SELECT branch_id  from Loan where customer_id = " + customer_id
+        result_query = self.run_select_query(qurey_str)
+
+        all_branches_has = []
+        for r in result_query:
+            all_branches_has.append(r.branch_id)
+        
+        return all_branches_has

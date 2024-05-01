@@ -85,17 +85,17 @@ def how_are_you_(display_size:int)->int:
         else:
             print('please try again  << 1 or 2 >> ')
 
-
 def admin_TUI(display_size:int)->int:
         
         message_box('Admin panel',display_size)
-        item_box('(0) information',display_size)
-        item_box('(1) Change password',display_size)
-        item_box('(2) Insert into Bank',display_size)
+        
+        item_box('(0) information       ',display_size)
+        item_box('(1) Change password   ',display_size)
+        item_box('(2) Insert into Bank  ',display_size)
         item_box('(3) Insert into Branch',display_size)
-        item_box('(4) Branch  budget',display_size)
-        item_box('(5) Check requests',display_size)
-        item_box('(6) Monitoring',display_size)
+        item_box('(4) Branch  budget    ',display_size)
+        item_box('(5) Check requests    ',display_size)
+        item_box('(6) Monitoring        ',display_size)
 
 
 
@@ -105,3 +105,20 @@ def admin_TUI(display_size:int)->int:
                  return int(tmp_input) 
             else:
                 print('please try again  << 0 - 6 >> ')
+
+def cutomer_TUI(display_size:int)->int:
+        
+        message_box('Customer panel',display_size)
+        
+        item_box('(1) New Account     ',display_size)
+        item_box('(2) Account balance ',display_size)
+        item_box('(3) Withdraw        ',display_size)
+        item_box('(4) Deposit         ',display_size)
+        item_box('(5) Loan application',display_size)
+
+        while True:
+            tmp_input = input_box(display_size)
+            if (tmp_input in ['1', '2', '3', '4', '5',] ):
+                 return int(tmp_input) 
+            else:
+                print('please try again  << 1 - 5 >> ')

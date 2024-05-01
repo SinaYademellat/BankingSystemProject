@@ -1,7 +1,6 @@
 
 import hashlib
 
-
 def read_Password_file(filename)->str:
     '''
     read only first line.
@@ -22,7 +21,6 @@ def hash_password(password:str)->str:
     hex_hash =hashlib.sha256(mix).hexdigest()
 
     return hex_hash 
-
 
 def writing_to_file(filename:str,new_tex:str)->None:
     
