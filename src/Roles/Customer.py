@@ -1,7 +1,7 @@
-import Person
+from  Person import person
 
 
-class customer(Person.person):
+class customer(person):
         def __init__(self, first_name:str, family_name:str ,national_code:int, home_town:str ,account_number:list, loan_number:list ):
                 super(customer, self).__init__(first_name, family_name, national_code, home_town)
                 self.account_number = account_number
