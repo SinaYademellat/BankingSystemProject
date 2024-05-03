@@ -22,6 +22,11 @@ class DatabasenHandel:
 
     # ----------------------------------------------------------------
 
+    def fetch_customer(self, national_code):
+            str_query = "SELECT * FROM customer where national_code = "+ national_code
+            result_query = self.run_select_query( str_query )
+            return result_query[0]
+
     def all_user_in_db(self)->list:
         
         result_query = self.run_select_query( " SELECT national_code  from customer ")
@@ -31,8 +36,17 @@ class DatabasenHandel:
             list_of_users.append(str(r.national_code))
 
         return list_of_users
-    
 
+    def all_branch_ID(self)->list:
+        
+        result_query = self.run_select_query( " SELECT branch_id  from Branch ")
+
+        list_of_branch_id = []
+        for r in result_query:
+            list_of_branch_id.append(str(r.branch_id))
+
+        return list_of_branch_id
+  
     def budget_of_this_branch(self , branch_id:str)->float:
 
         
