@@ -96,7 +96,6 @@ class customer(person):
 
                                 print('ok')
 
-
                         input("\nPress Enter to continue...")
                         os.system("cls" if os.name == "nt" else "clear")
                         Check_orders += 1

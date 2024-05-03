@@ -15,7 +15,6 @@ def read_Password_file(filename)->str:
          print(f'can`t open << {filename} >> ')
 
 def hash_password(password:str)->str:
-     
     salt = 'Sina_yad'
     mix =(password + salt).encode('utf-8')
     hex_hash =hashlib.sha256(mix).hexdigest()
@@ -23,7 +22,6 @@ def hash_password(password:str)->str:
     return hex_hash 
 
 def writing_to_file(filename:str,new_tex:str)->None:
-    
     try:
          handel = open(filename,'w')
          handel.write(new_tex)
@@ -33,7 +31,7 @@ def writing_to_file(filename:str,new_tex:str)->None:
         print(f'can`t open << {filename} >> ')
 
 def is_Admin(file_path:str , input_password:str)->bool:
-     
+
     input_password = hash_password(input_password)
     real_password  = read_Password_file(file_path)
 

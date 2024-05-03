@@ -1,6 +1,6 @@
 import sys
-import os
 sys.path += ['./Roles' ,'./DataBase' ]
+import os
 from Text_Ui.iomap import how_are_you_ 
 from  Security.Authentication import  is_Admin
 from  Roles.Admin import admin
@@ -14,14 +14,12 @@ if __name__ == '__main__':
     database = 'BankingSystemProject'
     username = 'sina'
     my_database_ = DatabasenHandel(server,database,username)
-
     path_of_password = 'Security//Password.txt'
 
     user_role = how_are_you_(30)
 
     if user_role == 1:
                 claim_password = input('Enter your password :')
-
                 if( is_Admin ( path_of_password, claim_password ) ):
                         server_admin = admin('sina','yad',1743,'ir','admin')
 
