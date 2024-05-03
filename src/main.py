@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
                 if( is_Admin ( path_of_password, claim_password ) ):
                         server_admin = admin('sina','yad',1743,'ir','admin')
-                        
+
                         os.system("cls" if os.name == "nt" else "clear")
                         server_admin.control_panel(my_database_)
 

@@ -8,11 +8,9 @@ class DatabasenHandel:
         self.DATABASE = database # 'BankingSystemProject'
         self.USERNAME = username # 'sina'
 
-        self.cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
-                            "Server=LAPTOP-LLIBH4NC;"
-                            "Database=BankingSystemProject;"
-                            "Trusted_Connection=yes;")
-    
+        connectionString = "Driver={ODBC Driver 17 for SQL Server};"  +  f"SERVER={server};DATABASE={database};Trusted_Connection=yes;"
+        self.cnxn = pyodbc.connect(connectionString)
+
     def run_select_query(self,query_):
         cursor = self.cnxn.cursor()
         cursor.execute(query_)
